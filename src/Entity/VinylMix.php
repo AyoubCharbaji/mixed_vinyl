@@ -30,9 +30,17 @@ class VinylMix
     private ?string $genre = null;
 
     #[ORM\Column]
-    private int $votes = 0;
+    private \DateTimeImmutable $createdAt;
 
+    #[ORM\Column]
+    private int $votes = 0;
+    public function __construct()
+    {
+        $this->createdAt = new \DateTimeImmutable();
+    }
+    
     #[ORM\Column(length: 100, unique: true)]
+    
     #[Slug(fields: ['title'])]
     private ?string $slug = null;
 
@@ -86,6 +94,16 @@ class VinylMix
     {
         $this->genre = $genre;
 
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeImmutable
+    {
+        return $this->createdAt;
+    }
+    public function setCreatedAt(\DateTimeImmutable $createdAt): self
+    {
+        $this->createdAt = $createdAt;
         return $this;
     }
 
