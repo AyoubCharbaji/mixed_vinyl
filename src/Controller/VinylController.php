@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\VinylMixRepository;
 use Pagerfanta\Pagerfanta;
 
 use App\Entity\VinylMix;
